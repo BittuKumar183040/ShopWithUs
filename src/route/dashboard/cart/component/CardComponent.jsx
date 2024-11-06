@@ -27,9 +27,9 @@ const CardComponent = ({ item }) => {
         <td className=' text-center'>{item.price}</td>
         <td className=' text-center'>
           <div className=' flex items-center justify-center h-full select-none'>
-            <BiLeftArrow onClick={()=>handleQuantity("-")} className=' border text-3xl p-2 cursor-pointer' />
-            <span className=' min-w-10 w-fit text-center bg-slate-200'>{quantity}</span>
-            <BiRightArrow onClick={()=>handleQuantity("+")} className=' border text-3xl p-2 cursor-pointer' />
+            <BiLeftArrow onClick={()=>handleQuantity("-")} className=' border text-3xl p-2 cursor-pointer rounded-sm shadow-md ' />
+            <span className=' min-w-10 w-fit text-center bg-slate-200 shadow-md'>{quantity}</span>
+            <BiRightArrow onClick={()=>handleQuantity("+")} className=' border text-3xl p-2 cursor-pointer rounded-sm shadow-md' />
           </div>
         </td>
         <td className=' text-right'>{quantity * item.price}</td>

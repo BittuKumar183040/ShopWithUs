@@ -18,10 +18,10 @@ const Cart = () => {
   return (
     <div className=' p-2'>
       <div className=' py-4'>
-        <div className=' flex justify-between mb-2'>
+        <div className=' flex justify-between mb-2 pointer-events-none'>
           <p className=' font-bold'>Your Cart</p>
           <p className='flex gap-2'>
-            Total Item - <span className=' text-center h-7 w-7 bg-slate-300 rounded-full flex items-center text-white justify-center shadow-md font-bold'>{cartItem.length}</span>
+            Total Item - <span className=' text-center h-7 w-7 bg-slate-400 rounded-full flex items-center text-white justify-center shadow-md font-bold'>{cartItem.length}</span>
           </p>
         </div>
         <hr />
@@ -30,7 +30,7 @@ const Cart = () => {
         <>
           <table className="table-auto w-full md:w-2/3">
             <thead>
-              <tr className=' opacity-80'>
+              <tr className=' opacity-80 border-b-2 '>
                 <th className=' text-left'>PRODUCT</th>
                 <th>PRICE</th>
                 <th>QTY</th>

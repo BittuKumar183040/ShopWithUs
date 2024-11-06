@@ -1,10 +1,15 @@
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import shoeWhite from './asset/shoeWhite.webp';
 
 const HeroPage = () => {
     
     return (
         <div className=' bg-white'>
-            <img src={shoeWhite} alt='' />
+            <LazyLoadImage
+                src={shoeWhite} 
+                alt=''
+                effect='blue' 
+            />
         </div>
     )
 }
