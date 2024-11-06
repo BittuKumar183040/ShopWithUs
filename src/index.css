@@ -5,3 +5,8 @@
 .transition {
     @apply transition-all duration-200;
 }
+
+
+body{
+    background-color: aqua;
+}
