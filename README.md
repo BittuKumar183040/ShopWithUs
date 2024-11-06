@@ -1,4 +1,5 @@
-# ShopWithUs.
+# ShopWithUs. 
+This is a ecommerce website which have baseline implemention of working.
 
 ## Installation
 
