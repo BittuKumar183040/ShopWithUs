@@ -3,7 +3,6 @@ import { BiCartAdd, BiRupee, BiSolidStar, BiStar } from 'react-icons/bi'
 import { nanoid } from 'nanoid';
 import { useDispatch } from 'react-redux';
 import { cartAdded } from '../../../reduxSlice/cartSlice';
-import { useNavigate } from 'react-router-dom';
 
 const Star = ({val}) => {
     return (
