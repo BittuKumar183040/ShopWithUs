@@ -17,7 +17,7 @@ const Star = ({val}) => {
 
 const CardProduct = ({item}) => {
     const dispatch = useDispatch();
-    
+    const discountPrice = Math.floor(item.price - (item.price * item.discount / 100)) 
     const addToCart = () =>{
         const cartBtnContainer = document.querySelector(`.cartBtn${item.id}`);
         const p = document.createElement('p')
@@ -30,7 +30,8 @@ const CardProduct = ({item}) => {
             p.remove()
             clearTimeout(showAdded)
         }, 500) 
-        dispatch(cartAdded(item))
+        let itemWithDiscount = {...item, discountPrice:discountPrice}
+        dispatch(cartAdded(itemWithDiscount))
     }
 
     return (
@@ -61,7 +62,7 @@ const CardProduct = ({item}) => {
                         </div>
                         <div className=' text-lg flex items-center w-fit border bg-slate-200 bg-opacity-70 border-gray-500 rounded-md px-1'>
                             <BiRupee/>
-                            <span className=' text-sm'>{Math.floor(item.price - (item.price * item.discount / 100)) }</span>
+                            <span className=' text-sm'>{discountPrice}</span>
                         </div>
                     </div>
                 </div>

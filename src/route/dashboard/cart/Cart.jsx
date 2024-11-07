@@ -3,6 +3,8 @@ import CardComponent from './component/CardComponent'
 import { useSelector } from 'react-redux'
 import { getCartItems } from '../../../reduxSlice/cartSlice'
 import { useNavigate } from 'react-router-dom'
+import Checkout from './component/Checkout'
+import CartTable from './component/CartTable'
 
 const ContinueShopping = () => {
   const navigate = useNavigate()
@@ -28,31 +30,19 @@ const Cart = () => {
       </div>
         {cartItem.length ?
         <>
-          <table className="table-auto w-full md:w-2/3">
-            <thead>
-              <tr className=' opacity-80 border-b-2 '>
-                <th className=' text-left'>PRODUCT</th>
-                <th>PRICE</th>
-                <th>QTY</th>
-                <th className=' text-right'>TOTAL</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                cartItem.map((item, idx) => <CardComponent key={item.id} item={item}/>)
-              }
-            </tbody>
-          </table>
+          <div className='flex flex-wrap gap-4'>
+            <CartTable />
+            <Checkout />
+          </div>
           <div className=' flex justify-center m-4'>
             <ContinueShopping />
           </div>
-
         </>
-          :
-          <div className=' flex flex-col gap-6 mt-20 items-center justify-center '>
-            <p>Not Item Added to cart</p>
-            <ContinueShopping />
-          </div>
+        :
+        <div className=' flex flex-col gap-6 mt-20 items-center justify-center '>
+          <p>Not Item Added to cart</p>
+          <ContinueShopping />
+        </div>
         }
     </div>
   )

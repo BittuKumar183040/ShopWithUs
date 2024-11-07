@@ -1,18 +1,24 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { BiLeftArrow, BiRightArrow } from 'react-icons/bi';
+import { useDispatch } from 'react-redux';
+import { setQuantity } from '../../../../reduxSlice/cartSlice';
 
 const CardComponent = ({ item }) => {
-  console.log(item)
-  const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
+  let quantityValue = useRef(1);
+
   const handleQuantity = (operation) =>{
+    const product = {...item};
     switch(operation){
       case '+':
-        setQuantity(quantity+1)
+        quantityValue.current += 1;
+        product.quantity = quantityValue.current;
+        dispatch(setQuantity(product))
       break;
       case '-':
-        if(quantity > 0){
-          setQuantity(quantity-1)
-        }
+        quantityValue.current -= 1;
+        product.quantity = quantityValue.current;
+        dispatch(setQuantity(product))
       break;
     }
   }
@@ -24,15 +30,18 @@ const CardComponent = ({ item }) => {
           <img className=' h-20 w-24 object-cover rounded-md ' src={item.image} alt="" />
           <p>{item.product_name}</p>
         </td>
-        <td className=' text-center'>{item.price}</td>
+        <td className=' text-center'>
+          <p className=' text-md text-left transform -rotate-6 text-green-500 font-bold'>{item.discount}% off <span className=' line-through text-red-500 '>{item.price}</span></p>
+          <p className=' text-lg'>{item.discountPrice}</p>
+        </td>
         <td className=' text-center'>
           <div className=' flex items-center justify-center h-full select-none'>
             <BiLeftArrow onClick={()=>handleQuantity("-")} className=' border text-3xl p-2 cursor-pointer rounded-sm shadow-md ' />
-            <span className=' min-w-10 w-fit text-center bg-slate-200 shadow-md'>{quantity}</span>
+            <span className=' min-w-10 w-fit text-center bg-slate-200 shadow-md'>{item.quantity}</span>
             <BiRightArrow onClick={()=>handleQuantity("+")} className=' border text-3xl p-2 cursor-pointer rounded-sm shadow-md' />
           </div>
         </td>
-        <td className=' text-right'>{quantity * item.price}</td>
+        <td className=' text-right font-bold tracking-wider'>{item.quantity * item.discountPrice}</td>
       </tr>
       <div className=' p-2'></div>
     </>
