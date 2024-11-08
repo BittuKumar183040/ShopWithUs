@@ -57,12 +57,12 @@ const CardProduct = ({item}) => {
                     <div className=' flex gap-2'>
                         <div className=' relative flex items-center text-sm transform -rotate-6'>
                             <BiRupee />
-                            <span>{item.price}</span>
+                            <span className=' text-nowrap'>Rs. {item.price}</span>
                             <div className='absolute h-0.5 w-full bg-black'></div>
                         </div>
                         <div className=' text-lg flex items-center w-fit border bg-slate-200 bg-opacity-70 border-gray-500 rounded-md px-1'>
                             <BiRupee/>
-                            <span className=' text-sm'>{discountPrice}</span>
+                            <span className=' text-sm text-nowrap h-fit'>Rs. {discountPrice}</span>
                         </div>
                     </div>
                 </div>

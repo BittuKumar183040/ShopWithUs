@@ -1,19 +1,10 @@
 import React from 'react'
-import CardComponent from './component/CardComponent'
 import { useSelector } from 'react-redux'
 import { getCartItems } from '../../../reduxSlice/cartSlice'
-import { useNavigate } from 'react-router-dom'
 import Checkout from './component/Checkout'
 import CartTable from './component/CartTable'
-
-const ContinueShopping = () => {
-  const navigate = useNavigate()
-  return (
-    <div onClick={()=>navigate('/dashboard')}>
-      <p className=' cursor-pointer p-2 bg-slate-600 inline-block text-white rounded-md shadow-md'>Continue Shopping</p>
-    </div>
-  )
-}
+import cart_empty from '../../../assets/cart_empty.png'
+import ContinueShopping from './component/ContinueShopping'
 
 const Cart = () => {
   const cartItem = useSelector(getCartItems)
@@ -30,17 +21,18 @@ const Cart = () => {
       </div>
         {cartItem.length ?
         <>
-          <div className='flex flex-wrap gap-4'>
+          <div className='flex flex-wrap gap-6 justify-end'>
             <CartTable />
             <Checkout />
           </div>
-          <div className=' flex justify-center m-4'>
-            <ContinueShopping />
-          </div>
         </>
         :
-        <div className=' flex flex-col gap-6 mt-20 items-center justify-center '>
-          <p>Not Item Added to cart</p>
+        <div className=' flex flex-col gap-6 mt-8 items-center justify-center '>
+          <div className=' flex flex-col justify-center items-center gap-1'>
+            <img className=' animate-pulse h-60' src={cart_empty} alt=""/>
+            <p className=' text-xl'>Your cart is Empty.</p>
+            <p className=' text-md opacity-70'>Looks like you haven't made your choice yet.</p>
+          </div>
           <ContinueShopping />
         </div>
         }
