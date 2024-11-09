@@ -1,4 +1,5 @@
 import React from 'react'
+import image_back from '../../../assets/login_back.jpg'
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
@@ -11,14 +12,10 @@ const Login = () => {
 
   return (
     <div
-      className="flex flex-col gap-4 justify-center items-center h-screen bg-gradient-to-r from-gray-500 to-gray-700 text-white"
-      style={{
-        backgroundImage: "url('https://media.istockphoto.com/id/1449490038/photo/online-shopping-and-e-commerce-technology-concept-shopper-using-computer-laptop-to-input.jpg?s=2048x2048&w=is&k=20&c=3Pmwqsxiy2XTePmajfBQyz2KcnC27QtzaFxNmBD9al0=')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
+      className="flex flex-col gap-4 justify-center items-center h-screen text-white"
+      
     >
+      <img src={image_back} alt="" className='absolute h-screen top-0 left-0 -z-10' />
       <p className="text-2xl font-semibold mb-6">Login</p>
       <form className="loginform flex flex-col bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-xs gap-5" onSubmit={userLogin}>
         <input
