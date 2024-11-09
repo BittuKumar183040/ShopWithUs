@@ -9,6 +9,9 @@ const cartSlice = createSlice({
   reducers: {
     cartAdded(state, action) {
       let item = {...action.payload, quantity:1}
+
+      
+      
       state.items.push(item)
     },
     setCartScreenStatus(state, action) {

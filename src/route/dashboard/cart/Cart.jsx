@@ -20,12 +20,10 @@ const Cart = () => {
         <hr />
       </div>
         {cartItem.length ?
-        <>
           <div className='flex flex-wrap gap-6 justify-end'>
             <CartTable />
             <Checkout />
           </div>
-        </>
         :
         <div className=' flex flex-col gap-6 mt-8 items-center justify-center '>
           <div className=' flex flex-col justify-center items-center gap-1'>

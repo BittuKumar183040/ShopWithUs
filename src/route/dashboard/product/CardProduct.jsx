@@ -1,4 +1,4 @@
-import React, { createElement } from 'react'
+import React from 'react'
 import { BiCartAdd, BiRupee, BiSolidStar, BiStar } from 'react-icons/bi'
 import { nanoid } from 'nanoid';
 import { useDispatch } from 'react-redux';
@@ -23,9 +23,7 @@ const CardProduct = ({item}) => {
         const p = document.createElement('p')
         p.textContent = "+1"
         p.classList.add("animate-ping", "absolute", "-left-7", "top-1")
-        
         cartBtnContainer.appendChild(p)
-
         const showAdded = setTimeout(()=>{
             p.remove()
             clearTimeout(showAdded)
