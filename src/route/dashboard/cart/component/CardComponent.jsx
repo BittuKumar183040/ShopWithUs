@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { BiLeftArrow, BiRightArrow } from 'react-icons/bi';
 import { useDispatch } from 'react-redux';
 import { setQuantity } from '../../../../reduxSlice/cartSlice';

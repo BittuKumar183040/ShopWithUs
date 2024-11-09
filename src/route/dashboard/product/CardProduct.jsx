@@ -1,4 +1,3 @@
-import React from 'react'
 import { BiCartAdd, BiRupee, BiSolidStar, BiStar } from 'react-icons/bi'
 import { nanoid } from 'nanoid';
 import { useDispatch } from 'react-redux';
