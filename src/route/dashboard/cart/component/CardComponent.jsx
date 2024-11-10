@@ -1,24 +1,17 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { BiLeftArrow, BiRightArrow } from 'react-icons/bi';
 import { useDispatch } from 'react-redux';
-import { setQuantity } from '../../../../reduxSlice/cartSlice';
+import { cartAdded, cartDecreased} from '../../../../reduxSlice/cartSlice';
 
 const CardComponent = ({ item }) => {
   const dispatch = useDispatch();
-  let quantityValue = useRef(1);
-
   const handleQuantity = (operation) =>{
-    const product = {...item};
     switch(operation){
       case '+':
-        quantityValue.current += 1;
-        product.quantity = quantityValue.current;
-        dispatch(setQuantity(product))
+        dispatch(cartAdded(item));
       break;
       case '-':
-        quantityValue.current -= 1;
-        product.quantity = quantityValue.current;
-        dispatch(setQuantity(product))
+        dispatch(cartDecreased(item))
       break;
     }
   }

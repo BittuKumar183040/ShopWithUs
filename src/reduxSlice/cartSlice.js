@@ -8,32 +8,32 @@ const cartSlice = createSlice({
   },
   reducers: {
     cartAdded(state, action) {
-      let item = {...action.payload, quantity:1}
-
-      
-      
-      state.items.push(item)
-    },
+      const existingItemIndex = state.items.findIndex(item => item.id === action.payload.id);
+      if (existingItemIndex !== -1) {
+        state.items[existingItemIndex].quantity += 1;
+      } else {
+        let item = { ...action.payload, quantity: 1 };
+        state.items.push(item);
+      }
+    },    
     setCartScreenStatus(state, action) {
       state.cartScreen = action.payload
     },
-    setQuantity(state, action) {
-      if(action.payload.quantity < 1){
-        state.items = state.items.filter(item => item.id !== action.payload.id)
+    cartDecreased(state, action) {
+      const existingItemIndex = state.items.findIndex(item => item.id === action.payload.id);
+      if (existingItemIndex !== -1) {
+        if (state.items[existingItemIndex].quantity > 1) {
+          state.items[existingItemIndex].quantity -= 1;
+        } else {
+          state.items.splice(existingItemIndex, 1);
+        }
       }
-      else{
-        state.items = state.items.map(item => 
-          item.id === action.payload.id
-          ? { ...item, quantity:action.payload.quantity}
-          : item
-        )
-      }
-    }
+    },
 
   },
 })
 
-export const { cartAdded, setCartScreenStatus, setQuantity } = cartSlice.actions
+export const { cartAdded, setCartScreenStatus, cartDecreased } = cartSlice.actions
 export const getCartItems = (state) => state.cart.items;
 export const getCartScreenStatus = (state) => state.cart.cartScreen;
 export const getTotalCartPrice = (state) => {
