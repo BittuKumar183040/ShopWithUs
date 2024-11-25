@@ -59,12 +59,12 @@ const ProductInfo = () => {
                     alt=""/>
 
                 <div className=" flex flex-col gap-3 mt-8 lg:w-1/2 lg:px-6 lg:mt-0">
-                    <h1 className="text-2xl font-semibold text-gray-800 dark:text-white lg:text-3xl lg:w-96">
-                        {product.product_name}
+                    <h1 className="text-2xl w-full overflow-hidden font-semibold text-gray-800 dark:text-white lg:text-3xl">
+                        <div dangerouslySetInnerHTML={{ __html: product.product_name}} />
                     </h1>
-                    <p className="max-w-lg mt-6 text-gray-500 dark:text-gray-400 ">
-                        {product.product_desc}
-                    </p>
+                    <div className="w-full mt-6 text-justify text-gray-500 dark:text-gray-400 ">
+                        <div dangerouslySetInnerHTML={{ __html: product.product_desc}} />
+                    </div>
                     {/* <h3 className="mt-6 text-lg font-medium text-blue-500">{product.product_group}</h3> */}
                     <div className="text-gray-600 dark:text-gray-300  flex justify-end ">
                         <Star style={{fontSize:"30px"}} val={product.rating}/>

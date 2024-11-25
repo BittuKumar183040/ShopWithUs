@@ -8,7 +8,7 @@ const Main = () => {
   return (
     <div className=' lg:mx-20 xl:mx-40 shadow-2xl mb-2 rounded-md overflow-hidden'>
       <HeroPage />
-      <Search />
+      {/* <Search /> */}
       <Products />
     </div>
   )
