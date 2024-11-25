@@ -4,14 +4,15 @@ import CardProduct from '../dashboard/product/CardProduct';
 
 const getRandomProducts = (n, count) => {
     const numbers = [];
+    const product = [];
     while (numbers.length < count) {
         const randomNumber = Math.floor(Math.random() * n) + 1;
         if (!numbers.includes(randomNumber)) {
-          numbers.push(products[randomNumber]);
+            numbers.push(randomNumber);
+            product.push(products[randomNumber]);
         }
       }
-    
-      return numbers;
+      return product;
 }
 
 const ProductFooter = ({product}) => {
@@ -22,7 +23,6 @@ const ProductFooter = ({product}) => {
         const productToShow = getRandomProducts(excludedProducts.length, 5)
         setProductToShow(productToShow)
     },[product])
-    console.log(product)
 
     return (
         <div className=' flex gap-4 flex-col mt-20'>
