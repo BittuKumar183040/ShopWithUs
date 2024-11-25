@@ -30,8 +30,8 @@ const CardProduct = ({item}) => {
     }
 
     return (
-        <div className=' overflow-hidden relative rounded-xl shadow-md cursor-pointer transition border-2 border-transparent
-            hover:shadow hover:border-gray-400 '>
+        <div className='overflow-hidden relative rounded-xl shadow-md cursor-pointer transition border-2 border-transparent
+            hover:shadow-2xl hover:border-gray-400 '>
             <LazyLoadImage
                 className=' lg:w-64 lg:h-64 object-cover w-40 h-40' 
                 src={item.image} 

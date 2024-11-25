@@ -72,12 +72,12 @@ const Products = () => {
           >
             Next
           </p>
+          <select onChange={changeItemsShown} className=' p-2.5 ml-20 rounded-md outline-0 cursor-pointer'>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+          </select>
         </div>
-        <select onChange={changeItemsShown} className=' p-2.5 rounded-md absolute right-2 outline-0 cursor-pointer'>
-          <option value="10">10</option>
-          <option value="20">20</option>
-          <option value="50">50</option>
-        </select>
       </div>
     </>
   )

@@ -2,6 +2,7 @@ import React from 'react'
 import HeroPage from './heroPage/HeroPage'
 import Products from './product/Products'
 import Search from './search/Search'
+import Footer from './footer/Footer'
 
 const Main = () => {
 
@@ -10,6 +11,7 @@ const Main = () => {
       <HeroPage />
       {/* <Search /> */}
       <Products />
+      <Footer/>
     </div>
   )
 }
