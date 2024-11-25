@@ -8,6 +8,8 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { cartAdded } from '../../reduxSlice/cartSlice';
 import toast, { Toaster } from 'react-hot-toast';
+import ProductFooter from './ProductFooter';
+import Footer from '../dashboard/footer/Footer';
 
 const ProductInfo = () => {
     const dispatch = useDispatch();
@@ -107,6 +109,12 @@ const ProductInfo = () => {
                         </button>
                     </div>
                 </div>
+            </div>
+            {
+                product !== 0 ? <ProductFooter product={product}/> : null 
+            }
+            <div className=' mt-10 bg-slate-200 rounded-lg'>
+                <Footer/>
             </div>
         </div> 
     </section>

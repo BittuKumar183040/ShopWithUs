@@ -77,7 +77,7 @@ const products = [
     "price": 3499,
     "discount": 5,
     "rating": 3,
-    "image": "https://cdn.pixabay.com/photo/2014/12/31/11/41/shoes-584850_1280.jpg"
+    "image": "https://cdn.pixabay.com/photo/2018/10/13/05/25/shoes-men-3743524_1280.jpg"
   }
   , {
     id: "9c616f50-4508-493a-85fa-dfa925517db0",

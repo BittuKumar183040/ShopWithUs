@@ -14,7 +14,7 @@ const chunkArray = (array, chunkSize) => {
 const Products = () => {
 
   const [products, setProducts] = useState([]);
-  const [itemsToShown, setItemsToShown] = useState(10);
+  const [itemsToShown, setItemsToShown] = useState(20);
   const [countIndex, setCountIndex] = useState(0);
 
   useEffect(()=>{
@@ -72,9 +72,9 @@ const Products = () => {
           >
             Next
           </p>
-          <select onChange={changeItemsShown} className=' p-2.5 ml-20 rounded-md outline-0 cursor-pointer'>
+          <select value={itemsToShown.toString()} onChange={changeItemsShown} className=' p-2.5 ml-20 rounded-md outline-0 cursor-pointer'>
             <option value="10">10</option>
-            <option value="20">20</option>
+            <option value="20" >20</option>
             <option value="50">50</option>
           </select>
         </div>
