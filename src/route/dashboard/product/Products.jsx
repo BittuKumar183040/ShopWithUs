@@ -57,7 +57,7 @@ const Products = () => {
                 className={`items-center hidden px-4 py-2 mx-1 transition-colors duration-300 transform rounded-md sm:flex 
                 dark:bg-slate-200 dark:text-slate-800 
                 dark:hover:text-slate-200 hover:bg-slate-600 dark:hover:bg-slate-400 hover:text-white 
-                  ${index === countIndex ? " opacity-55 pointer-events-none dark:text-state-800" : " bg-white text-gray-700 cursor-pointer "}
+                  ${index === countIndex ? " opacity-55 bg-slate-200 pointer-events-none dark:text-state-800" : " bg-white text-gray-700 cursor-pointer "}
                 `}
               >
                 {index+1}

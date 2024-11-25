@@ -7,7 +7,7 @@ import Footer from './footer/Footer'
 const Main = () => {
 
   return (
-    <div className=' lg:mx-20 xl:mx-40 shadow-2xl mb-2 rounded-md overflow-hidden dark:bg-slate-400'>
+    <div className=' lg:mx-20 xl:mx-40 shadow-2xl mb-2 rounded-md overflow-hidden'>
       <HeroPage />
       {/* <Search /> */}
       <Products />

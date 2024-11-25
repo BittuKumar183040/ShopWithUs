@@ -8,7 +8,7 @@ const Footer = () => {
             <div className="flex flex-col items-center text-center">
                 <div className='flex items-center gap-4'>
                     <img className="w-auto h-7 sm:h-8" src="/vite.svg" alt=""/>
-                    <p className=' text-lg'>ShopWithUs.</p>
+                    <p className=' text-lg dark:text-white'>ShopWithUs.</p>
                 </div>
                 <div className="flex flex-wrap justify-center mt-6 -mx-4">
                     <a href="https://github.com/BittuKumar183040/ShopWithUs" className="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400" aria-label="Reddit"> Github Repository </a>

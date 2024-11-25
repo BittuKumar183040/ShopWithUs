@@ -14,7 +14,7 @@ const Checkout = () => {
             <div className='  p-2 px-4 rounded-md shadow-md flex flex-col gap-2'>
                 <div className=' flex text-md font-semibold justify-between items-center'>
                     <p className=' uppercase'>Subtotal</p>
-                    <p className=' rounded-md  text-2xl font-bold text-slate-700'>Rs. {cartValue}</p>
+                    <p className=' rounded-md  text-2xl font-bold text-slate-700 dark:text-slate-100'>Rs. {cartValue}</p>
                 </div>
                 <div className=' flex justify-between items-center font-semibold '>
                     <p className=' uppercase'>Shiyping</p>
@@ -32,8 +32,8 @@ const Checkout = () => {
         </div>
         <div className= ' flex justify-end items-center p-4 gap-5 border rounded-b-lg '>
             <ContinueShopping />
-            <p className=' p-2 px-8 rounded-md tracking-wider font-bold text-black shadow-lg border-2 border-gray-800 cursor-pointer
-                transition hover:text-white hover:bg-gray-800 '>
+            <p className=' p-2 px-8 rounded-md tracking-wider font-bold text-black shadow-lg border-2 border-gray-800 dark:border-white cursor-pointer
+                transition hover:text-white hover:bg-gray-800 dark:text-white '>
                 Check Out
             </p> 
         </div>

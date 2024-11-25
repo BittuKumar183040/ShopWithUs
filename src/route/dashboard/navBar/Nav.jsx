@@ -46,6 +46,7 @@ const Nav = () => {
     const darkModeHandler = () => {
         setDark(!dark);
         document.body.classList.toggle("dark");
+        dark ? document.body.style.backgroundColor="white" : document.body.style.backgroundColor="rgb(15, 23, 42)"
     }
     return (
         <div className=' flex justify-between items-center px-4 bg-slate-200 shadow-md rounded-b-lg'>

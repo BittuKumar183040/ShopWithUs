@@ -9,7 +9,7 @@ import ContinueShopping from './component/ContinueShopping'
 const Cart = () => {
   const cartItem = useSelector(getCartItems)
   return (
-    <div className=' p-2 lg:mx-20 xl:mx-40 dark:bg-slate-600 dark:h-screen dark:text-white '>
+    <div className=' p-2 lg:mx-20 xl:mx-40 dark:bg-slate-800 dark:text-white rounded-b-lg'>
       <div className=' py-4 '>
         <div className=' flex justify-between mb-2 pointer-events-none'>
           <p className=' font-bold'>Your Cart</p>
