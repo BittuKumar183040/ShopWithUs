@@ -1,25 +1,56 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { BiUser } from 'react-icons/bi'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { getCartItems, setCartScreenStatus } from '../../reduxSlice/cartSlice'
+import { getCartItems, setCartScreenStatus } from '../../../reduxSlice/cartSlice'
+import axios from 'axios'
+import More from './More'
 
 const Nav = () => {
     const navigator = useNavigate()
     const dispatch = useDispatch()
-
+    const [userInfo, setUserInfo] = useState(0);
     const showCart = () => {
         dispatch(setCartScreenStatus(true))
         navigator("/shopping_cart")
+    }
+
+    useEffect(() => {
+        const access_token = localStorage.getItem("authToken");
+        if (access_token) {
+          axios.get(
+              `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${access_token}`,
+              {
+                headers: {
+                  Authorization: `Bearer ${access_token}`,
+                  Accept: "application/json",
+                },
+              }
+            )
+            .then((res) => {
+                setUserInfo(res.data)
+            })
+            .catch((err) => {
+                localStorage.clear();
+                navigator('/');
+                console.error(err)
+            });
+        }
+      }, []);
+
+    const logout = () => {
+        // navigator('/')
+        console.log(userInfo)
     }
     return (
         <div className=' flex justify-between items-center px-4 bg-slate-200 shadow-md rounded-b-lg'>
             <p className=' font-extrabold tracking-wider select-none opacity-70 cursor-pointer' onClick={()=>navigator("/dashboard")}>ShopWithUs.</p>
             <div className=' flex items-center gap-5'>
-                <div onClick={()=>navigator('/')} className=' h-fit text-sm border border-gray-400 cursor-pointer flex gap-4 items-center text-slate-600 bg-slate-300 rounded-md p-1 px-2 shadow-md'>
+                <div className=' h-fit text-sm flex gap-4 items-center text-slate-600 bg-slate-300 rounded-md p-1 px-2'>
                     <BiUser />
-                    <p>Login</p>
+                    <p>{userInfo.given_name}</p>
                 </div>
+                {userInfo ? <More/> : ""}
                 <div onClick={showCart} className=" flex justify-center items-center mr-4 cursor-pointer">
                     <div className="relative py-2">
                         <div className="t-0 absolute left-3">

@@ -2,13 +2,11 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { getTotalCartPrice, getTotalCartQuantity } from '../../../../reduxSlice/cartSlice'
 import ContinueShopping from './ContinueShopping';
-import { useNavigate } from 'react-router-dom';
 
 const Checkout = () => {
     const cartQuantity = useSelector(getTotalCartQuantity);
     const cartValue = useSelector(getTotalCartPrice);
-    const navigate = useNavigate();
-  return (
+    return (
     <div className=' flex flex-col w-full md:w-fit'>
         <div className='  p-2 rounded-t-lg flex flex-col border'>
             <p className=' text-xl font-bold'>Checkout</p>
