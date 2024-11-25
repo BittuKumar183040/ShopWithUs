@@ -5,10 +5,15 @@ import { useNavigate } from 'react-router-dom'
 import { getCartItems, setCartScreenStatus } from '../../../reduxSlice/cartSlice'
 import axios from 'axios'
 import More from './More'
+import { IoMoon } from 'react-icons/io5';
+import { IoIosSunny } from "react-icons/io";
+import { Link } from 'react-router-dom';
+
 
 const Nav = () => {
-    const navigator = useNavigate()
-    const dispatch = useDispatch()
+    const navigator = useNavigate();
+    const dispatch = useDispatch();
+    const [dark, setDark] = useState(false);
     const [userInfo, setUserInfo] = useState(0);
     const showCart = () => {
         dispatch(setCartScreenStatus(true))
@@ -38,19 +43,35 @@ const Nav = () => {
         }
       }, []);
 
-    const logout = () => {
-        // navigator('/')
-        console.log(userInfo)
+    const darkModeHandler = () => {
+        setDark(!dark);
+        document.body.classList.toggle("dark");
     }
     return (
         <div className=' flex justify-between items-center px-4 bg-slate-200 shadow-md rounded-b-lg'>
             <p className=' font-extrabold tracking-wider select-none opacity-70 cursor-pointer' onClick={()=>navigator("/dashboard")}>ShopWithUs.</p>
             <div className=' flex items-center gap-5'>
-                <div className=' h-fit text-sm flex gap-4 items-center text-slate-600 bg-slate-300 rounded-md p-1 px-2'>
-                    <BiUser />
-                    <p>{userInfo.given_name}</p>
+                <div className="flex gap-2 items-center">
+                    { userInfo ?
+                        <>
+                            <More/>
+                            <div className=' h-fit text-sm flex gap-4 items-center text-slate-600 bg-slate-300 rounded-md p-1 px-2'>
+                                <BiUser />
+                                <p>{userInfo.given_name}</p>
+                            </div>
+                        </>
+                        : <Link to="/" className=' cursor-pointer shadow-md text-sm px-4 bg-slate-300 rounded-md text-gray-700 p-1'>
+                            Login
+                        </Link>
+                    }
+                    <div onClick={()=> darkModeHandler()} className=" shadow-md border-2 dark:border-gray-200 cursor-pointer flex items-center bg-white p-2 px-4 rounded-full dark:bg-gray-800 dark:text-white">
+                        <div>
+                            {
+                                dark ? <IoIosSunny /> : <IoMoon />  
+                            }
+                        </div>
+                    </div>
                 </div>
-                {userInfo ? <More/> : ""}
                 <div onClick={showCart} className=" flex justify-center items-center mr-4 cursor-pointer">
                     <div className="relative py-2">
                         <div className="t-0 absolute left-3">

@@ -2,7 +2,7 @@ import React from 'react'
 
 const PlacedSuccessfully = () => {
   return (
-    <div>PlacedSuccessfully</div>
+    <div>Placed Successfully</div>
   )
 }
 

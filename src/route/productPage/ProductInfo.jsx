@@ -74,13 +74,13 @@ const ProductInfo = () => {
                     <div className=' flex justify-end gap-10 items-center '>
                         <div className=' flex flex-col items-center transform -rotate-6 -translate-y-4'>
                             <p className=' text-md text-red-700 transform'>{product.discount}% off</p>
-                            <div className=' flex items-center relative'>
+                            <div className=' flex items-center relative dark:text-white'>
                                 <BiRupee />
-                                <span className=' text-nowrap text-2xl'>Rs. {product.price}</span>
-                                <div className='absolute top-1/2 h-0.5 w-full bg-black'></div>
+                                <span className=' text-nowrap text-2xl '>Rs. {product.price}</span>
+                                <div className='absolute top-1/2 h-0.5 w-full bg-black dark:bg-white'></div>
                             </div>
                         </div>
-                        <div className=' text-4xl flex items-center w-fit bg-opacity-70 rounded-md px-1'>
+                        <div className=' text-4xl flex items-center w-fit bg-opacity-70 rounded-md px-1 dark:text-white'>
                             <BiRupee/>
                             <span className=' text-nowrap h-fit'>Rs. {discountedPrice}</span>
                         </div>
@@ -103,7 +103,7 @@ const ProductInfo = () => {
                             </button>
                         </div>   
                         
-                        <button onClick={addToCart} className="flex gap-4 w-fit items-center px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
+                        <button onClick={addToCart} className="flex gap-4 w-fit items-center px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-slate-500 rounded-lg hover:bg-slate-600 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
                             <FaCartArrowDown />
                             <span className="mx-1">Add to Cart</span>
                         </button>
@@ -113,7 +113,7 @@ const ProductInfo = () => {
             {
                 product !== 0 ? <ProductFooter product={product}/> : null 
             }
-            <div className=' mt-10 bg-slate-200 rounded-lg'>
+            <div className=' mt-10 bg-slate-200 dark:bg-slate-600 rounded-lg'>
                 <Footer/>
             </div>
         </div> 

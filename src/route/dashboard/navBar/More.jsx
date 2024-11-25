@@ -13,7 +13,7 @@ const More = () => {
 
     return (
         <div>
-            <BiLogOut onClick={logout} className=' cursor-pointer shadow-md text-3xl bg-slate-300 rounded-md text-gray-700 p-1' />
+            <BiLogOut onClick={logout} className=' cursor-pointer shadow-md text-2xl bg-slate-300 rounded-md text-gray-700 p-1' />
         </div>
     )
 }
