@@ -24,3 +24,4 @@ node run dev
     - Smooth Animation Effects
 - User Authentication and Authorization
 - Secured Application with backend support.
+- Google Authentication Login
