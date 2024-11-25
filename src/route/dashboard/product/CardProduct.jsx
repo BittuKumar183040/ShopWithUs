@@ -33,7 +33,7 @@ const CardProduct = ({item}) => {
         <div className='overflow-hidden relative rounded-xl shadow-md cursor-pointer transition border-2 border-transparent
             hover:shadow-2xl hover:border-gray-400 '>
             <LazyLoadImage
-                className=' lg:w-64 lg:h-64 object-cover w-40 h-40' 
+                className=' lg:w-64 lg:h-64 object-cover w-52 h-48' 
                 src={item.image} 
                 alt='' 
                 effect='blur'
@@ -52,7 +52,7 @@ const CardProduct = ({item}) => {
                     </div>
                 </div>
                 <div className=' flex justify-between items-center '>
-                    <p className=' text-xs text-red-700 transform -rotate-6'>{item.discount}% off</p>
+                    <p className=' text-xs text-red-700 transform -rotate-6 whitespace-nowrap'>{item.discount}% off</p>
                     <div className=' flex gap-2 flex-wrap justify-end'>
                         <div className=' relative flex items-center text-sm transform -rotate-6'>
                             <BiRupee />
