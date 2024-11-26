@@ -10,6 +10,7 @@ import { cartAdded } from '../../reduxSlice/cartSlice';
 import toast, { Toaster } from 'react-hot-toast';
 import ProductFooter from './ProductFooter';
 import Footer from '../dashboard/footer/Footer';
+import Nav from '../dashboard/navBar/Nav';
 
 const ProductInfo = () => {
     const dispatch = useDispatch();
@@ -47,6 +48,8 @@ const ProductInfo = () => {
     }
 
     return (
+    <>
+    <Nav />
     <section className="bg-white dark:bg-gray-900">
         <div className="container px-6 py-10 mx-auto">
             <Link to="/dashboard" className=' opacity-80 p-2 my-2 cursor-pointer shadow-md pr-4 flex items-center gap-4 bg-slate-100 w-fit rounded-full text-lg '>
@@ -118,6 +121,7 @@ const ProductInfo = () => {
             </div>
         </div> 
     </section>
+    </>
     )
 }
 

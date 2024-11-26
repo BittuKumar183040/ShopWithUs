@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { BiUser } from 'react-icons/bi'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link} from 'react-router-dom'
 import { getCartItems, setCartScreenStatus } from '../../../reduxSlice/cartSlice'
 import axios from 'axios'
 import More from './More'
 import { IoMoon } from 'react-icons/io5';
 import { IoIosSunny } from "react-icons/io";
-import { Link } from 'react-router-dom';
+import { useAuth } from '../../auth/AuthContext'
 
 
 const Nav = () => {
+    const { logout, login } = useAuth();
     const navigator = useNavigate();
     const dispatch = useDispatch();
     const [dark, setDark] = useState(false);
@@ -22,6 +23,20 @@ const Nav = () => {
 
     useEffect(() => {
         const access_token = localStorage.getItem("authToken");
+        if(access_token === "guest"){
+            const dummyData = {
+                "id": "110752211787108321034",
+                "email": "bk183040@gmail.com",
+                "verified_email": true,
+                "name": "Bittu Kumar",
+                "given_name": "Bittu",
+                "family_name": "Kumar",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJ9V9ySIQ57Jz42tqtLcC_e6STNEMffxMxyybfFTxxz2G8UOfRJ2Q=s96-c"
+            }
+            setUserInfo(dummyData)
+            login();
+            return 0;
+        }
         if (access_token) {
           axios.get(
               `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${access_token}`,
@@ -34,9 +49,12 @@ const Nav = () => {
             )
             .then((res) => {
                 setUserInfo(res.data)
+                console.log(res.data)
+                login();
             })
             .catch((err) => {
                 localStorage.clear();
+                logout();
                 navigator('/');
                 console.error(err)
             });

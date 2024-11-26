@@ -7,39 +7,50 @@ import { Provider } from 'react-redux'
 import Cart from './route/dashboard/cart/Cart';
 import Signup from './route/landingPage/signup/Signup';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import { isAuthenticated, PrivateRoute, PublicRoute } from './route/RoutesProtection';
+// import { isAuthenticated, PrivateRoute, PublicRoute } from './route/RoutesProtection';
 import ProductInfo from './route/productPage/ProductInfo';
+import { AuthProvider } from './route/auth/AuthContext';
+import PublicRoute from './route/auth/PublicRoute';
+import PrivateRoute from './route/auth/PrivateRoute';
 
 function App() {
 
-  const authStatus = isAuthenticated();
-
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <GoogleOAuthProvider clientId={import.meta.env.VITE_API_GOOGLE_API_TOKEN}>
-          <Routes>
-            
-            {/* Public Routes */} 
-            <Route element={<PublicRoute isAuth={authStatus} />}>
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-            </Route>
-            
-            {/* Private Routes */}
-            <Route path="/" element={<Navigate to={authStatus ? "/dashboard" : "/login"} replace />} />
-            <Route path="*" element={<Navigate to={authStatus ? "/dashboard" : "/login"} replace />} />
-    
-            {/* Private Routes */}
-            <Route element={<PrivateRoute isAuth={authStatus} />}>
-              <Route path="/dashboard" element={<Main />} />
-              <Route path="/shopping_cart" element={<Cart />} />
-              <Route path="/product/:id" element={<ProductInfo key={window.location.pathname}/>} />
-            </Route>
-            
-          </Routes>
-        </GoogleOAuthProvider>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <GoogleOAuthProvider clientId={import.meta.env.VITE_API_GOOGLE_API_TOKEN}>
+            <Routes>
+              <Route
+                path="/"
+                element={<PublicRoute restricted={true} component={Login} />}
+              />
+              <Route
+                path="/login"
+                element={<PublicRoute restricted={true} component={Login} />}
+              />
+              <Route
+                path="/signup"
+                element={<PublicRoute restricted={true} component={Signup} />}
+              />
+
+              <Route
+                path="/dashboard"
+                element={<PrivateRoute component={Main} />}
+              />
+              <Route
+                path="/shopping_cart"
+                element={<PrivateRoute component={Cart} />}
+              />
+              <Route
+                path="/product/:id"
+                element={<PrivateRoute component={ProductInfo} key={window.location.pathname} />}
+              />
+                         
+            </Routes>
+          </GoogleOAuthProvider>
+        </BrowserRouter>
+      </AuthProvider>
     </Provider>
   )
 }
