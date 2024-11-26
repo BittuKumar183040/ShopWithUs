@@ -4,7 +4,6 @@ import { useAuth } from './AuthContext';
 
 const PublicRoute = ({ component: Component, restricted, ...rest }) => {
   const { isAuthenticated } = useAuth();
-
   return isAuthenticated && restricted ? (
     <Navigate to="/dashboard" />
   ) : (
