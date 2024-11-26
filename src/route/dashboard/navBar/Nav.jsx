@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { BiUser } from 'react-icons/bi'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link} from 'react-router-dom'
 import { getCartItems, setCartScreenStatus } from '../../../reduxSlice/cartSlice'
 import axios from 'axios'
 import More from './More'
 import { IoMoon } from 'react-icons/io5';
 import { IoIosSunny } from "react-icons/io";
-import { Link } from 'react-router-dom';
+import { useAuth } from '../../auth/AuthContext'
 
 
 const Nav = () => {
+    const { logout, login } = useAuth();
     const navigator = useNavigate();
     const dispatch = useDispatch();
     const [dark, setDark] = useState(false);
@@ -22,7 +23,8 @@ const Nav = () => {
 
     useEffect(() => {
         const access_token = localStorage.getItem("authToken");
-        if (access_token) {
+
+        if (access_token !== "guest") {
           axios.get(
               `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${access_token}`,
               {
@@ -34,12 +36,25 @@ const Nav = () => {
             )
             .then((res) => {
                 setUserInfo(res.data)
+                console.log(res.data)
+                login();
             })
             .catch((err) => {
                 localStorage.clear();
+                logout();
                 navigator('/');
                 console.error(err)
             });
+        } else {
+            const dummyData = {
+                "id": "110752211787108321034",
+                "email": "guest@gmail.com",
+                "name": "Guest",
+                "given_name": "Guest",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJ9V9ySIQ57Jz42tqtLcC_e6STNEMffxMxyybfFTxxz2G8UOfRJ2Q=s96-c"
+            };
+            setUserInfo(dummyData);
+            login();
         }
       }, []);
 
@@ -57,7 +72,7 @@ const Nav = () => {
                         <>
                             <More/>
                             <div className=' h-fit text-sm flex gap-4 items-center text-slate-600 bg-slate-300 rounded-md p-1 px-2'>
-                                <BiUser />
+                                <img className='h-5 w-5 rounded-full' src={userInfo.picture} alt=""/>
                                 <p>{userInfo.given_name}</p>
                             </div>
                         </>

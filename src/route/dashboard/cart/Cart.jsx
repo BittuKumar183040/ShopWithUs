@@ -5,10 +5,13 @@ import Checkout from './component/Checkout'
 import CartTable from './component/CartTable'
 import cart_empty from '../../../assets/cart_empty.png'
 import ContinueShopping from './component/ContinueShopping'
+import Nav from '../navBar/Nav'
 
 const Cart = () => {
   const cartItem = useSelector(getCartItems)
   return (
+    <>
+    <Nav/>
     <div className=' p-2 lg:mx-20 xl:mx-40 dark:bg-slate-800 dark:text-white rounded-b-lg'>
       <div className=' py-4 '>
         <div className=' flex justify-between mb-2 pointer-events-none'>
@@ -35,6 +38,7 @@ const Cart = () => {
         </div>
         }
     </div>
+    </>
   )
 }
 
