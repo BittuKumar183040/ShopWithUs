@@ -22,6 +22,7 @@ const ProductFooter = ({product}) => {
         const excludedProducts = products.filter(item => item.id !== product.id)
         const productToShow = getRandomProducts(excludedProducts.length, 5)
         setProductToShow(productToShow)
+        window.scrollTo({top:0, behavior:'smooth'})
     },[product])
 
     return (
