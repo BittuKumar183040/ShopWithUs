@@ -20,6 +20,7 @@ const Products = () => {
   useEffect(()=>{
     const item = chunkArray(projectsList, itemsToShown)
     setProducts(item)
+    window.scrollTo({top:0, behavior:'smooth'})
   },[itemsToShown, countIndex])
 
   const changeItemsShown = (e) => {
@@ -29,10 +30,23 @@ const Products = () => {
 
   return (
     <>
-      <div className=' bg-slate-100 dark:bg-slate-800 flex flex-wrap justify-center gap-5 p-4 '>
+      <div className=' bg-slate-100 dark:bg-slate-800 flex flex-wrap justify-center pt-4'>
         {products.length
-          ?
-          products[countIndex].map((item)=> <CardProduct key={item.id} item={item}/>)
+          ?(
+            <>
+              <div className=' flex flex-col items-center text-lg'>
+                <p className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white">
+                  Our Latest Products
+                </p>
+                <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300">
+                  Discover your favorites from our exclusive collection.
+                </p>
+              </div>
+              <div className=' flex flex-wrap justify-between  md:justify-center gap-5 p-4 '>
+                {products[countIndex].map((item)=> <CardProduct key={item.id} item={item}/>)}
+              </div>
+            </>
+          )
           :
           <div className=' flex items-center justify-center gap-1 w-full flex-col '>
             <p className=''>Shop With Us have no product is to show</p>
