@@ -74,23 +74,12 @@ const ProductInfo = () => {
                     <div className="text-gray-600 dark:text-gray-300  flex justify-end ">
                         <Star style={{fontSize:"30px"}} val={product.rating}/>
                     </div>
-                    <div className=' flex justify-end gap-10 items-center '>
-                        <div className=' flex flex-col items-center transform -rotate-6 -translate-y-4'>
-                            <p className=' text-md text-red-700 transform'>{product.discount}% off</p>
-                            <div className=' flex items-center relative dark:text-white'>
-                                <BiRupee />
-                                <span className=' text-nowrap text-2xl '>Rs. {product.price}</span>
-                                <div className='absolute top-1/2 h-0.5 w-full bg-black dark:bg-white'></div>
-                            </div>
-                        </div>
-                        <div className=' text-4xl flex items-center w-fit bg-opacity-70 rounded-md px-1 dark:text-white'>
-                            <BiRupee/>
-                            <span className=' text-nowrap h-fit'>Rs. {discountedPrice}</span>
-                        </div>
+                    <div className=" flex justify-end gap-4 items-center flex-wrap ">
+                        <div className="text-sm text-red-600 font-semibold transform -rotate-12 ">{product.discount}% off</div>
+                        <div className="line-through text-gray-500 text-lg">MRP. {product.price}</div>
+                        <div className="text-2xl md:text-3xl font-bold text-gray-800">₹ {discountedPrice}</div>
                     </div>
-                    <div className=' flex justify-end mt-6'>
-                    </div>
-
+                    <div className=' flex justify-end mt-2'></div>
                     <div className="flex items-center justify-between mt-12 gap-10 ">
                         <div className=' flex justify-between gap-20'>
                             <button onClick={getBack} title="left arrow" className="p-2 text-gray-800 transition-colors duration-300 border rounded-full rtl:-scale-x-100 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 hover:bg-gray-100">

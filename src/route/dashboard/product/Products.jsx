@@ -20,7 +20,7 @@ const Products = () => {
   useEffect(()=>{
     const item = chunkArray(projectsList, itemsToShown)
     setProducts(item)
-    window.scrollTo({top:0, behavior:'smooth'})
+    window.scrollTo({top:0})
   },[itemsToShown, countIndex])
 
   const changeItemsShown = (e) => {
@@ -42,7 +42,7 @@ const Products = () => {
                   Discover your favorites from our exclusive collection.
                 </p>
               </div>
-              <div className=' flex flex-wrap justify-between  md:justify-center gap-5 p-4 '>
+              <div className=' flex flex-wrap justify-between bg-black md:justify-center gap-5 p-4'>
                 {products[countIndex].map((item)=> <CardProduct key={item.id} item={item}/>)}
               </div>
             </>
