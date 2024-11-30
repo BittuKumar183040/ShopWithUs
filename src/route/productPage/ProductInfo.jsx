@@ -77,7 +77,7 @@ const ProductInfo = () => {
                     <div className=" flex justify-end gap-4 items-center flex-wrap ">
                         <div className="text-sm text-red-600 font-semibold transform -rotate-12 ">{product.discount}% off</div>
                         <div className="line-through text-gray-500 text-lg">MRP. {product.price}</div>
-                        <div className="text-2xl md:text-3xl font-bold text-gray-800">₹ {discountedPrice}</div>
+                        <div className="text-2xl md:text-3xl font-bold dark:text-white text-gray-800">₹ {discountedPrice}</div>
                     </div>
                     <div className=' flex justify-end mt-2'></div>
                     <div className="flex items-center justify-between mt-12 gap-10 ">

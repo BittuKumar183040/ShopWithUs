@@ -33,7 +33,7 @@ const CardProduct = ({item}) => {
         <div className='overflow-hidden relative rounded-xl shadow-md cursor-pointer transition border-2 border-transparent
             hover:shadow-2xl hover:border-gray-400'>
             <LazyLoadImage
-                className=' lg:w-64 lg:h-64 object-cover sm:w-56 sm:h-48 h-72 w-[calc(100vw-20px)]'
+                className=' lg:w-64 lg:h-64 object-cover sm:w-56 sm:h-48 h-72 rounded-md w-[calc(100vw-20px)]'
                 src={item.image} 
                 alt='' 
                 effect='blur'
