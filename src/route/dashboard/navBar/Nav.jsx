@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { BiUser } from 'react-icons/bi'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate, Link} from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { getCartItems, setCartScreenStatus } from '../../../reduxSlice/cartSlice'
 import axios from 'axios'
 import More from './More'
@@ -25,26 +25,26 @@ const Nav = () => {
         const access_token = localStorage.getItem("authToken");
 
         if (access_token !== "guest") {
-          axios.get(
-              `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${access_token}`,
-              {
-                headers: {
-                  Authorization: `Bearer ${access_token}`,
-                  Accept: "application/json",
-                },
-              }
+            axios.get(
+                `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${access_token}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${access_token}`,
+                        Accept: "application/json",
+                    },
+                }
             )
-            .then((res) => {
-                setUserInfo(res.data)
-                console.log(res.data)
-                login();
-            })
-            .catch((err) => {
-                localStorage.clear();
-                logout();
-                navigator('/');
-                console.error(err)
-            });
+                .then((res) => {
+                    setUserInfo(res.data)
+                    console.log(res.data)
+                    login();
+                })
+                .catch((err) => {
+                    localStorage.clear();
+                    logout();
+                    navigator('/');
+                    console.error(err)
+                });
         } else {
             const dummyData = {
                 "id": "110752211787108321034",
@@ -56,23 +56,25 @@ const Nav = () => {
             setUserInfo(dummyData);
             login();
         }
-      }, []);
+    }, []);
 
     const darkModeHandler = () => {
         setDark(!dark);
         document.body.classList.toggle("dark");
-        dark ? document.body.style.backgroundColor="white" : document.body.style.backgroundColor="rgb(15, 23, 42)"
+        dark ? document.body.style.backgroundColor = "white" : document.body.style.backgroundColor = "rgb(15, 23, 42)"
     }
     return (
-        <div className=' flex justify-between items-center px-4 bg-slate-200 shadow-md rounded-b-lg'>
-            <p className=' font-extrabold tracking-wider select-none opacity-70 cursor-pointer' onClick={()=>navigator("/dashboard")}>ShopWithUs.</p>
+        <div className=' flex justify-between items-center px-4 bg-slate-200 dark:bg-slate-800 dark:text-gray-200 shadow-md'>
+            <p className=' font-extrabold tracking-wider select-none opacity-70 cursor-pointer' onClick={() => navigator("/dashboard")}>ShopWithUs.</p>
             <div className=' flex items-center gap-5'>
                 <div className="flex gap-2 items-center">
-                    { userInfo ?
+                    {userInfo ?
                         <>
-                            <More/>
-                            <div className=' h-fit text-sm flex gap-4 items-center text-slate-600 bg-slate-300 rounded-md p-1 px-2'>
-                                <img className='h-5 w-5 rounded-full' src={userInfo.picture} alt=""/>
+                            <More />
+                            <div className=' h-fit text-sm flex gap-4 items-center rounded-md p-1 px-2
+                                border border-gray-400 dark:border-gray-500
+                                dark:bg-slate-800 dark:text-white '>
+                                <img className='h-5 w-5 rounded-full' src={userInfo.picture} alt="" />
                                 <p>{userInfo.given_name}</p>
                             </div>
                         </>
@@ -80,10 +82,14 @@ const Nav = () => {
                             Login
                         </Link>
                     }
-                    <div onClick={()=> darkModeHandler()} className=" shadow-md border-2 dark:border-gray-200 cursor-pointer flex items-center bg-white p-2 px-4 rounded-full dark:bg-gray-800 dark:text-white">
+                    <div onClick={() => darkModeHandler()}
+                        className=" shadow-md border border-transparent p-1.5 px-4 rounded-full cursor-pointer flex items-center  
+                            dark:border-gray-500 bg-white dark:text-white
+                            dark:bg-gray-800"
+                    >
                         <div>
                             {
-                                dark ? <IoIosSunny /> : <IoMoon />  
+                                dark ? <IoIosSunny size={15} /> : <IoMoon size={15} />
                             }
                         </div>
                     </div>

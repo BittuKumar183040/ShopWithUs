@@ -9,12 +9,12 @@ const Main = () => {
 
   return (<>
     <Nav />
-    <div className=' lg:mx-20 xl:mx-40 shadow-2xl mb-2 rounded-md overflow-hidden'>
-      <Carousel/>
+    <div className=' lg:mx-20 xl:mx-40 shadow-2xl mb-2 overflow-hidden'>
+      <Carousel />
       {/* <HeroPage /> */}
       {/* <Search /> */}
       <Products />
-      <Footer/>
+      <Footer />
     </div>
   </>
   )

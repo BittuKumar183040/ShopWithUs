@@ -16,7 +16,12 @@ const More = () => {
 
     return (
         <div>
-            <BiLogOut onClick={logoutUser} className=' cursor-pointer shadow-md text-2xl bg-slate-300 rounded-md text-gray-700 p-1' />
+            <BiLogOut
+                className=' p-1 cursor-pointer rounded-md
+                    border border-gray-400 dark:border-gray-500
+                    dark:bg-slate-800 dark:text-white text-gray-700'
+                size={28}
+                onClick={logoutUser} />
         </div>
     )
 }
